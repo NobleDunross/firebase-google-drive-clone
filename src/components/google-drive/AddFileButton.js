@@ -9,6 +9,9 @@ import { v4 as uuidV4 } from "uuid"
 import { ProgressBar, Toast } from "react-bootstrap"
 
 export default function AddFileButton({ currentFolder }) {
+  
+  console.log(currentFolder)
+  
   const [uploadingFiles, setUploadingFiles] = useState([])
   const { currentUser } = useAuth()
 
@@ -25,7 +28,7 @@ export default function AddFileButton({ currentFolder }) {
       currentFolder === ROOT_FOLDER
         ? `${currentFolder.path.join("/")}/${file.name}`
         : `${currentFolder.path.join("/")}/${currentFolder.name}/${file.name}`
-
+    
     const uploadTask = storage
       .ref(`/files/${currentUser.uid}/${filePath}`)
       .put(file)
