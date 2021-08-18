@@ -17,9 +17,11 @@ function Search({hideButtons = false}) {
 
     const popover = (
         <Popover>
-          <Popover.Title as="h1">Popover right</Popover.Title>
+          <Popover.Title as="h1">Search Bar</Popover.Title>
           <Popover.Content>
-            Lorem ipsum dolor sit amet, consectetur adipiscing <b>lit.</b>
+            The Search Bar will be <strong>your main navigation tool within Tyreos Asset Universe </strong>and 
+            the usabilty will feel similar to a normal google search with suggestions dropping 
+            down below. 
           </Popover.Content>
         </Popover>
       );
@@ -29,15 +31,15 @@ function Search({hideButtons = false}) {
 
             {!hideButtons ? (
                 < div className='search__buttons'>
+                    <MarketButton />
                     <BenchmarkingButton />
                     <InvestingButton />
-                    <MarketButton />
                 </div>
             ): (
                 < div className='search__buttons'>
+                    <Button className="search__buttonsHidden" variant="outlined">Markt</Button>
                     <Button className="search__buttonsHidden" variant="outlined">Vergleichsanalyse</Button>
                     <Button className="search__buttonsHidden" variant="outlined">Investitionsanalyse</Button>
-                    <Button className="search__buttonsHidden" variant="outlined">Markt</Button>
                 </div>
             )}
             <OverlayTrigger

@@ -6,9 +6,12 @@ import Popover from 'react-bootstrap/Popover'
 
 const popover = (
     <Popover>
-      <Popover.Title as="h1">Popover right</Popover.Title>
+      <Popover.Title as="h1">Benchmarking Dashboard</Popover.Title>
       <Popover.Content>
-        Lorem ipsum dolor sit amet, consectetur adipiscing <b>lit.</b>
+        The Benchmarking Dashboard will give you a detailed benchmarking overview regarding your asset, 
+        which you are analyzing. It will show you <strong> Macro Analysis </strong> (e.g. industry KPIs, market size, BIP etc. )
+        but also <strong>Micro Analysis</strong> (e.g. Margins, Pricing, Location)
+        as well as <strong>Time Series Analysis</strong> (e.g. Price and Margin Developments)
       </Popover.Content>
     </Popover>
   );

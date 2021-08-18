@@ -15,7 +15,7 @@
 .profile__header {
   display: flex;
   justify-content: space-between;
-  padding: 10px 30px;
+  padding: 1vh 2vw;
   align-items: center;
 }
 
@@ -59,7 +59,7 @@
   flex: 1;
   display: flex;
   /* margin-top: 10%; */
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .profile__body > img {

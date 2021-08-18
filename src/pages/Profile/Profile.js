@@ -4,10 +4,13 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useProfile } from "../../hooks/useProfile"
 import { useHistory } from "react-router-dom";
 import { Col } from 'reactstrap';
+import { Button } from "@material-ui/core";
 
+import AppsCollectionButton from '../../components/Buttons/AppsCollectionButton';
 import AccountButton from '../../components/Buttons/AccountButton';
 import AboutButton from '../../components/Buttons/AboutButton';
-import a5 from '../../images/people/AaronNagelLinkedIn.jpeg';
+import a5 from '../../images/people/default.jpg';
+import a1 from '../../images/people/AaronNagelLinkedIn.jpeg';
 
 import s from './Profile.css';
 
@@ -17,6 +20,10 @@ export default function Profile () {
   const { currentUser, logout } = useAuth()
   const history = useHistory()
   const profileInfo = useProfile(currentUser.uid).profile
+
+  function pushHome () {
+    history.push("/")
+  }
 
   async function handleLogout() {
     setError("")
@@ -36,10 +43,11 @@ export default function Profile () {
               <AboutButton />
           </div>
           <div className="profile__headerMiddle" >
-            <img onlclick = {history.push("/")} src="/210425_Logo_TAU.png" alt= "TV" />
+              <img src="/210425_Logo_TAU.png" alt= "TV" />
           </div>
           <div className='home__headerRight'>
-              <AccountButton inis = {"PE"}/>
+              <AppsCollectionButton onclick={pushHome}/>
+              <AccountButton inis = {profileInfo.initials}/>
           </div>
         </div>
         
@@ -53,25 +61,25 @@ export default function Profile () {
           >
             <Col md={5}>
               <div className="profileInfo">
-              <div className={s.profileContactContainer}>
-                <span className="thumb-xl mb-3">
-                  <img className={[s.profileAvatar, 'rounded-circle'].join(' ')} src={a5} alt="..." />
-                </span>
-              </div>
+                <div className={s.profileContactContainer}>
+                  <span className="thumb-xl mb-3">
+                      <img className={[s.profileAvatar, 'rounded-circle'].join(' ')} src={a5} alt="..." />
+                  </span>
+                </div>
               </div>
             </Col>
             <Col md={7}>
               <div className="profileInfo">
-              <h5 className="fw-normal"> {profileInfo.firstName} <span className="fw-semi-bold">{profileInfo.lastName}</span></h5>
-              <p> {profileInfo.job} </p>
-              <p>
-              {/* eslint-disable-next-line */}
-                <a href="#" className="badge badge-info rounded-0 mb-2 mr-2">{profileInfo.company}</a>
-                <a href="#" className="badge badge-success rounded-0 mb-2 mr-2">{profileInfo.industry}</a>
-              </p>
-              <p className="lead mt-xlg">
-                <strong>Email:</strong> {currentUser.email}
-              </p>
+                <h5 className="fw-normal"> {profileInfo.firstName} <span className="fw-semi-bold">{profileInfo.lastName}</span></h5>
+                <p> {profileInfo.job} </p>
+                <p>
+                {/* eslint-disable-next-line */}
+                  <a href="#" className="badge badge-info rounded-0 mb-2 mr-2">{profileInfo.company}</a>
+                  <a href="#" className="badge badge-success rounded-0 mb-2 mr-2">{profileInfo.industry}</a>
+                </p>
+                <p className="lead mt-xlg">
+                  <strong>Email:</strong> {currentUser.email}
+                </p>
               </div>
             </Col>
           </Container>

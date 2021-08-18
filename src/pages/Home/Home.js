@@ -5,11 +5,26 @@ import Search from "../../components/Search/Search";
 import { Button } from "@material-ui/core";
 import AccountButton from '../../components/Buttons/AccountButton';
 import AboutButton from '../../components/Buttons/AboutButton';
+import { useAuth } from "../../contexts/AuthContext";
+import { auth } from "../../firebase"
 
-class Home extends Component {
+import AccountCircleSharpIcon from '@material-ui/icons/AccountCircleSharp';
 
-    render () {
-        
+
+export default function Home () {    
+
+    const { currentUser, logout } = useAuth()
+
+    auth.onAuthStateChanged(function(user) {
+        if (user) {
+            console.log("penis")
+        } else {
+            console.log("vaginis")
+        }
+    });
+
+    // const checklog = currentUser.uid ? "penis" : "vagina";
+
         return (
             <div className='home'>
                 <div className='home__header'> 
@@ -17,7 +32,7 @@ class Home extends Component {
                         <AboutButton />
                     </div>
                     <div className='home__headerRight'>
-                        <AccountButton />
+                        <AccountButton inis = {<AccountCircleSharpIcon />} />
                     </div>
                 </div>
 
@@ -32,6 +47,4 @@ class Home extends Component {
                 </div>
             </div>
         );
-    }
 }
-export default Home

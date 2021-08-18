@@ -18,8 +18,9 @@ function App() {
     <Router>
       <AuthProvider>
         <Switch>
+          <Route exact path="/" component={Home} />
           {/* Drive */}
-          <PrivateRoute exact path="/" component={Home} />
+          <PrivateRoute path="/dashboard" component={Dashboard} />
           {/* <PrivateRoute exact path="/folder/:folderId" component={Dashboard} /> */}
 
           {/* Profile */}

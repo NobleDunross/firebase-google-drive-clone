@@ -24,19 +24,19 @@ export function useProfile(profileId = null) {
         profileId,
         profile : [],
     })
-    
-    database.profiles
-        .doc(profileId)
-        .get()
-        .then(doc => {
-            dispatch({
-                type: ACTIONS.SELECT_PROFILE,
-                payload : {
-                    profile : database.formatDoc(doc)
-                },
-            })  
-        })
-    
+    useEffect(() => {
+        database.profiles
+            .doc(profileId)
+            .get()
+            .then(doc => {
+                dispatch({
+                    type: ACTIONS.SELECT_PROFILE,
+                    payload : {
+                        profile : database.formatDoc(doc)
+                    },
+                })  
+            })
+    }, [profileId])
     console.log(state)
     return state
 }
