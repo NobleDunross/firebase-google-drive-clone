@@ -9,7 +9,7 @@ export default function NavbarComponent() {
         WDS Drive
       </Navbar.Brand>
       <Nav>
-        <Nav.Link as={Link} to="/user">
+        <Nav.Link as={Link} to="/profile">
           Profile
         </Nav.Link>
       </Nav>

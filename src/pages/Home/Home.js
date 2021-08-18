@@ -1,12 +1,10 @@
 import React, { useState, Component }  from 'react'
 import './Home.css';
 import { useHistory, Link } from "react-router-dom";
-import Search from "../components/Search";
+import Search from "../../components/Search/Search";
 import { Button } from "@material-ui/core";
-import AccountButton from '../components/Buttons/AccountButton';
-import AboutButton from '../components/Buttons/AboutButton';
-
-import { connect } from "react-redux"
+import AccountButton from '../../components/Buttons/AccountButton';
+import AboutButton from '../../components/Buttons/AboutButton';
 
 class Home extends Component {
 
@@ -36,11 +34,4 @@ class Home extends Component {
         );
     }
 }
-
-// const mapStateToProps = (state) => {
-//     return {
-//       profile : state.auth.email
-//     }
-//   }
-
-export default connect() (Home)
+export default Home

@@ -8,10 +8,10 @@ import { Button } from "@material-ui/core";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover'
 
-import BenchmarkingButton from './Buttons/BenchmarkingButton';
-import MarketButton from './Buttons/MarketButton';
-import InvestingButton from './Buttons/InvestingButton';
-import AppsCollectionButton from './Buttons/AppsCollectionButton'
+import BenchmarkingButton from '../Buttons/BenchmarkingButton';
+import MarketButton from '../Buttons/MarketButton';
+import InvestingButton from '../Buttons/InvestingButton';
+import AppsCollectionButton from '../Buttons/AppsCollectionButton'
 
 function Search({hideButtons = false}) {
 

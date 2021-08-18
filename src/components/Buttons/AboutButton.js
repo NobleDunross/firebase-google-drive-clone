@@ -17,7 +17,7 @@ const AboutButton = () => (
                     </div>
             }
         >
-            <Button >About TAU </Button>
+            <Button> <h3> About TAU </h3> </Button>
         </OverlayTrigger>
     </div>
 );

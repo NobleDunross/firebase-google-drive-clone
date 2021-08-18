@@ -1,17 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { Container } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContext";
+import { useProfile } from "../../hooks/useProfile"
 import { useHistory } from "react-router-dom";
-import {
-  Row,
-  Col,
-} from 'reactstrap';
+import { Col } from 'reactstrap';
 
 import AccountButton from '../../components/Buttons/AccountButton';
 import AboutButton from '../../components/Buttons/AboutButton';
 import a5 from '../../images/people/AaronNagelLinkedIn.jpeg';
-
-import { database, auth } from "../../firebase"
 
 import s from './Profile.css';
 
@@ -20,30 +16,14 @@ export default function Profile () {
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
   const history = useHistory()
-
-  // const profile = 
-  //   database.profiles
-  //     .doc(currentUser.uid)
-  //     .get()
-  //     .then(doc => {
-  //       profile: database.formatDoc(doc)
-  //     })
-  
-  // console.log(
-  //   database.profiles
-  //     .doc(currentUser.uid)
-  //     .get()
-  //     .then(doc => {
-  //       profile: database.formatDoc(doc)
-  //     })
-  // )
+  const profileInfo = useProfile(currentUser.uid).profile
 
   async function handleLogout() {
     setError("")
 
     try {
       await logout()
-      history.push("/home")
+      history.push("/")
     } catch {
       setError("Failed to log out")
     }
@@ -55,8 +35,11 @@ export default function Profile () {
           <div className='home__headerLeft'>
               <AboutButton />
           </div>
+          <div className="profile__headerMiddle" >
+            <img onlclick = {history.push("/")} src="/210425_Logo_TAU.png" alt= "TV" />
+          </div>
           <div className='home__headerRight'>
-              <AccountButton />
+              <AccountButton inis = {"PE"}/>
           </div>
         </div>
         
@@ -79,11 +62,12 @@ export default function Profile () {
             </Col>
             <Col md={7}>
               <div className="profileInfo">
-              <h5 className="fw-normal">Aaron <span className="fw-semi-bold">Nagel</span></h5>
-              <p> Co-Founder </p>
+              <h5 className="fw-normal"> {profileInfo.firstName} <span className="fw-semi-bold">{profileInfo.lastName}</span></h5>
+              <p> {profileInfo.job} </p>
               <p>
               {/* eslint-disable-next-line */}
-                <a href="#" className="badge badge-info rounded-0 mb-2 mr-2">Tyreos Ventures</a>
+                <a href="#" className="badge badge-info rounded-0 mb-2 mr-2">{profileInfo.company}</a>
+                <a href="#" className="badge badge-success rounded-0 mb-2 mr-2">{profileInfo.industry}</a>
               </p>
               <p className="lead mt-xlg">
                 <strong>Email:</strong> {currentUser.email}
